@@ -1,12 +1,32 @@
-const ethereumButton = document.querySelector('.enableEthereumButton');
-const showAccount = document.querySelector('.showAccount');
+$(document).ready(function () {
+    $('.connectBtn').on('click', function () {
+        if (walletAddress === null) {
+            $("#walletConnectModal").css("display", "block");
+        }
+        else {
+            if (confirm("Would you like to disconnect from this dApp?")) {
+                if (isMetaMask) {
+                    metaMaskConnect.disconnect();
+                }
+                else {
+                    walletConnect.disconnect();
+                }
+            }
+        }
+    });
 
-ethereumButton.addEventListener('click', () => {
-  getAccount();
+    $("#modalWConnect").on("click", function () {
+        walletConnect.initialise();
+        walletConnect.connect();
+        $("#walletConnectModal").css("display", "none");
+    });
+
+    $("#modalMMConnect").on("click", function () {
+        metaMaskConnect.initialise().then(function () {
+            metaMaskConnect.connect();
+        });
+        $("#walletConnectModal").css("display", "none");
+    });
+
+    $("#walletConnectModal").css("display", "block");
 });
-
-async function getAccount() {
-  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-  const account = accounts[0];
-  showAccount.innerHTML = account;
-}
