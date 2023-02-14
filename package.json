@@ -4,7 +4,7 @@
   "description": "ChatGpt Server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [
     "chatgpt"
@@ -18,3 +18,4 @@
     "openai": "^3.1.0"
   }
 }
+

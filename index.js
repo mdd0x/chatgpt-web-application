@@ -1,5 +1,5 @@
 const express = require('express');
-const URL = require("url").URL;
+// const URL = require("url").URL;
 const {Configuration, OpenAIApi} = require("openai");
 const app = express();
 const cors = require('cors');
@@ -49,5 +49,5 @@ app.post('/get-prompt-result', async (req, res) => {
     }
 });
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
