@@ -49,5 +49,5 @@ app.post('/get-prompt-result', async (req, res) => {
     }
 });
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 80;
 app.listen(port, () => console.log(`Listening on port ${port}`));
