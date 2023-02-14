@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script>
-        document.write(unescape('%3Chead%3E%0A%20%20%20%20%3Ctitle%3EShib%20AI%20%3C/title%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22./assets/css/highlight.min.css%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22./assets/css/index.css%22%3E%0A%20%20%20%20%3Clink%20href%3D%22https%3A//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css%22%20rel%3D%22stylesheet%22%3E%0A%3C/head%3E'))
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script>
+  <head>
+    <title>Shib AI </title>
+    <link rel="stylesheet" href="./assets/css/highlight.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+
+
         
 <body style="background-color: black;">
     <div id="payment" class="center">
@@ -111,59 +116,14 @@
         </div>
       </div>
 
-        <script>
-            document.write(unescape('%0A%3Cscript%20src%3D%22./assets/js/highlight.min.js%22%3E%3C/script%3E%0A%3Cscript%20src%3D%22./assets/js/showdown.min.js%22%3E%3C/script%3E%0A%3Cscript%20src%3D%22./assets/js/index.js%22%3E%3C/script%3E%0A%3Cscript%20src%3D%22https%3A//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js%22%3E%3C/script%3E'))
-            </script>
-            <script src="assets/js/connect.js"></script>
-            <script type="text/javascript">
-              window.addEventListener('load', async () => {
-              
-                if (window.ethereum) {
-                  // window.web3 = new Web3(ethereum);
-                  web3 = new Web3(window.ethereum);
-                  console.log("provider detected");
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script>
+      <!-- <script src="assets/js/web3.min.js"></script> -->
+<script src="./assets/js/highlight.min.js"></script>
+<script src="./assets/js/showdown.min.js"></script>
+<script src="./assets/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>'))
+<script src="assets/js/connect.js"></script>
 
-
-                  try {
-                    await ethereum.enable();
-                    initPayButton()
-                  } catch (err) {
-                    $('#status').html('User denied account access', err)
-                  }
-                } 
-                
-                
-                else if (window.web3) {
-                  window.web3 = new Web3(web3.currentProvider)
-                  initPayButton()
-                } else {
-                  $('#status').html('No Metamask (or other Web3 Provider) installed')
-                }
-                await window.ethereum.send('eth_requestAccounts');
-              })
-          
-              const initPayButton = () => {
-                $('.pay-button').click(() => {
-                  // paymentAddress is where funds will be send to
-                  const paymentAddress = '0xf9a598A7885D727B3b773463efE387f15C28174c'
-                  const amountEth = 0.001
-          
-                  web3.eth.sendTransaction({
-                    to: paymentAddress,
-                    value: web3.toWei(amountEth, 'ether')
-                  }, (err, transactionId) => {
-                    if  (err) {
-                      console.log('Payment failed', err)
-                      $('#status').html('Payment failed')
-                    } else {
-                      console.log('Payment successful', transactionId)
-                      $('#status').html('Payment successful')
-                      document.getElementById( 'payment' ).style.display = 'none';
-                    }
-                  })
-                })
-              }
-            </script>
-            
 </body>
 </html>
