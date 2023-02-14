@@ -1,3 +1,13 @@
+
+  const provider =  detectEthereumProvider()
+
+  if (provider) {
+    console.log('Ethereum successfully detected!')
+    
+  } else {
+    console.error('Please install MetaMask!')
+}
+
 window.addEventListener('load', async () => {
               
     if (window.ethereum) {
