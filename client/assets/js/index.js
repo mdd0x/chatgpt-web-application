@@ -36,7 +36,7 @@ function addResponse(selfFlag, prompt) {
     const uniqueId = generateUniqueId();
     const html = `
             <div class="response-container ${selfFlag ? 'my-question' : 'chatgpt-response'}">
-                <img class="avatar-image" src="assets/img/${selfFlag ? 'me' : 'chatgpt'}.png" alt="avatar"/>
+                <img class="avatar-image" src="assets/img/${selfFlag ? 'user' : 'shib'}.png" alt="avatar"/>
                 <div class="prompt-content" id="${uniqueId}">${prompt}</div>
             </div>
         `

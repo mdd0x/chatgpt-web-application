@@ -3,33 +3,74 @@
 <head>
     <title>Multi AI Chat</title>
     <link rel="stylesheet" href="./assets/css/highlight.min.css">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./assets/css/index.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<div id="response-list">
-</div>
-<div id="regenerate-button-container">
-    <button id="regenerate-response-button">
-        Regenerate Response
-    </button>
-</div>
-<div id="model-select-container">
-    <label for="model-select">Choose Category:</label>
-    <select id="model-select">
-        <option value="gpt" selected>Shib Knowledge AI</option>
-        <option value="codex">Codex (Understand and generate code, including translating natural language to code)</option>
-        <option value="image">Create Image with Multi AI</option>
-    </select>
-</div>
-<div id="input-container">
-    <div id="prompt-input" contentEditable></div>
-    <button id="submit-button"></button>
-</div>
+<body style="background-color: black;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background: #0e0e0f !important;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="assets/img/shib.png" alt="" width="30px">
+            Shib AI
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Live Chart</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Download </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="response-list"></div>
+            </div>
+            <div class="col-12">
+                <div id="regenerate-button-container">
+                    <button id="regenerate-response-button">
+                        Regenerate Response
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="model-select-container">
+                    <label for="model-select">AI Category:</label> <br> <hr>
+                    <select id="model-select">
+                        <option value="gpt" selected>Shib Knowledge</option>
+                        <option value="codex">Shib Programming</option>
+                        <option value="image">Shib Image Creation</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <div id="input-container">
+                    <div id="prompt-input" contentEditable></div>
+                    <button id="submit-button"></button>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+
+
 <script src="./assets/js/highlight.min.js"></script>
 <script src="./assets/js/showdown.min.js"></script>
 <script src="./assets/js/index.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
