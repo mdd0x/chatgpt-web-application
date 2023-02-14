@@ -1,32 +1,21 @@
-$(document).ready(function () {
-    $('.connectBtn').on('click', function () {
-        if (walletAddress === null) {
-            $("#walletConnectModal").css("display", "block");
-        }
-        else {
-            if (confirm("Would you like to disconnect from this dApp?")) {
-                if (isMetaMask) {
-                    metaMaskConnect.disconnect();
-                }
-                else {
-                    walletConnect.disconnect();
-                }
-            }
-        }
-    });
+if (window.ethereum) {
+  handleEthereum();
+} else {
+  window.addEventListener('ethereum#initialized', handleEthereum, {
+    once: true,
+  });
 
-    $("#modalWConnect").on("click", function () {
-        walletConnect.initialise();
-        walletConnect.connect();
-        $("#walletConnectModal").css("display", "none");
-    });
+  // If the event is not dispatched by the end of the timeout,
+  // the user probably doesn't have MetaMask installed.
+  setTimeout(handleEthereum, 3000); // 3 seconds
+}
 
-    $("#modalMMConnect").on("click", function () {
-        metaMaskConnect.initialise().then(function () {
-            metaMaskConnect.connect();
-        });
-        $("#walletConnectModal").css("display", "none");
-    });
-
-    $("#walletConnectModal").css("display", "block");
-});
+function handleEthereum() {
+  const { ethereum } = window;
+  if (ethereum && ethereum.isMetaMask) {
+    alert('Ethereum successfully detected!');
+    // Access the decentralized web!
+  } else {
+    alert('Please install MetaMask!');
+  }
+}
