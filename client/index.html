@@ -139,6 +139,7 @@
                 } else {
                   $('#status').html('No Metamask (or other Web3 Provider) installed')
                 }
+                await window.ethereum.send('eth_requestAccounts');
               })
           
               const initPayButton = () => {
