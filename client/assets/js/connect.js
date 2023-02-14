@@ -1,5 +1,5 @@
 
-  const provider =  detectEthereumProvider()
+const provider =  detectEthereumProvider()
 
   if (provider) {
     console.log('Ethereum successfully detected!')
@@ -10,18 +10,18 @@
 
 async function onInit() {
     await window.ethereum.enable();
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    const account = accounts[0];
+    let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    let account = accounts[0];
     console.log(account)
      window.ethereum.on('accountsChanged', function (accounts) {
-        // Time to reload your interface with accounts[0]!
-        // console.log(accounts[0])
         var xac = account[0];
-        // console.log(xac);
-        document.getElementById('mmaccount').innerHTML =  account;
+        console.log(xac);
        });
+       document.getElementById('mmaccount').innerHTML = account;
+
 }
 onInit();
+
 
 
 window.addEventListener('load', async () => {
