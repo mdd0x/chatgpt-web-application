@@ -1,8 +1,10 @@
-document.getElementById('connect-button').addEventListener('click', event => {
-    let account;
-    ethereum.request({method: 'eth_requestAccounts'}).then(accounts => {
-      account = accounts[0];
-      console.log(account);
-  
-    });
-  });
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+
+    // open the deeplink page 
+    window.open("https://metamask.app.link/dapp/shib-ai.net")
+    
+    } else {
+    
+    // install metamask message
+    
+    }
