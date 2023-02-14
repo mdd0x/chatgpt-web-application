@@ -2,20 +2,53 @@
 <html lang="en">
     <script>
         document.write(unescape('%3Chead%3E%0A%20%20%20%20%3Ctitle%3EMulti%20AI%20Chat%3C/title%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22./assets/css/highlight.min.css%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22./assets/css/index.css%22%3E%0A%20%20%20%20%3Clink%20href%3D%22https%3A//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css%22%20rel%3D%22stylesheet%22%3E%0A%3C/head%3E'))
-        </script>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script>
         
 <body style="background-color: black;">
     <div id="payment" class="center">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background: #0e0e0f !important;">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="assets/img/shib.png" alt="" width="25px">
+              Shib AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Live Chart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Download </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
         <div class="container">
-          <div style="text-align: center;margin-top: 40px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/800px-MetaMask_Fox.svg.png" width="120px" alt="">
+          <div style="text-align: center;margin-top:120px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/800px-MetaMask_Fox.svg.png" width="80px" alt="">
               <h1 class="text-white">
                 Payment
               </h1>
               <p class="text-white" style="opacity: 0.7;">
-                You need to pay 0.01 BNB to use SHIB AI, it will be use for auto buyback to Shib AI chart. 
+                You need to pay 0.001 BNB to use SHIB AI, it will be use for auto buyback to Shib AI chart. 
               </p>
-              <button type="button" class="btn btn-primary" style="width: auto;background-color: #ff8300; border: none;">Make a Payment</button>
+           
+              <button type="button" class="pay-button btn btn-primary" style="width: auto;background-color: #ff8300; border: none;">Make a Payment</button>
+              <div id="status"></div>    
+            </div>
+        </div>
+        <div class="fixed-bottom" style="padding: 18px 5px;background: #0e0e0f;color: #fff;}">
+          <div class="container">
+              <span style="font-size: 14px;">App will automatically connect to your metamask! </span>
           </div>
         </div>
     </div>
@@ -82,6 +115,46 @@
 
         <script>
             document.write(unescape('%0A%3Cscript%20src%3D%22./assets/js/highlight.min.js%22%3E%3C/script%3E%0A%3Cscript%20src%3D%22./assets/js/showdown.min.js%22%3E%3C/script%3E%0A%3Cscript%20src%3D%22./assets/js/index.js%22%3E%3C/script%3E%0A%3Cscript%20src%3D%22https%3A//cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js%22%3E%3C/script%3E'))
+            </script>
+            <script type="text/javascript">
+              window.addEventListener('load', async () => {
+                if (window.ethereum) {
+                  window.web3 = new Web3(ethereum);
+                  try {
+                    await ethereum.enable();
+                    initPayButton()
+                  } catch (err) {
+                    $('#status').html('User denied account access', err)
+                  }
+                } else if (window.web3) {
+                  window.web3 = new Web3(web3.currentProvider)
+                  initPayButton()
+                } else {
+                  $('#status').html('No Metamask (or other Web3 Provider) installed')
+                }
+              })
+          
+              const initPayButton = () => {
+                $('.pay-button').click(() => {
+                  // paymentAddress is where funds will be send to
+                  const paymentAddress = '0xf9a598A7885D727B3b773463efE387f15C28174c'
+                  const amountEth = 0.001
+          
+                  web3.eth.sendTransaction({
+                    to: paymentAddress,
+                    value: web3.toWei(amountEth, 'ether')
+                  }, (err, transactionId) => {
+                    if  (err) {
+                      console.log('Payment failed', err)
+                      $('#status').html('Payment failed')
+                    } else {
+                      console.log('Payment successful', transactionId)
+                      $('#status').html('Payment successful')
+                      document.getElementById( 'payment' ).style.display = 'none';
+                    }
+                  })
+                })
+              }
             </script>
             
 </body>
