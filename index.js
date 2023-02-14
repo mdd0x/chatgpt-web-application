@@ -30,7 +30,7 @@ app.post('/get-prompt-result', async (req, res) => {
             const result = await openai.createImage({
                 prompt,
                 response_format: 'url',
-                size: '256×256'
+                size: '512x512'
             });
             return res.send(result.data.data[0].url);
         }
