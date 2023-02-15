@@ -61,7 +61,7 @@ function loader(element) {
 
 function setErrorForResponse(element, message) {
     element.innerText = message;
-    element.style.color = 'rgb(200, 0, 0)';
+    element.style.color = 'rgb(255 255 255)';
 }
 
 function setRetryResponse(prompt, uniqueId) {
